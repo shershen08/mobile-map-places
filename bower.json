@@ -1,0 +1,35 @@
+{
+  "name": "t-map",
+  "version": "0.1.0",
+  "authors": [
+    "mikekuzn <michail.kuznetsov@gmail.com>"
+  ],
+  "description": "Public toilets in Amsterdam",
+  "main": "./index.html",
+  "keywords": [
+    "geojson",
+    "google",
+    "maps",
+    "json"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.x",
+    "mobile-angular-ui": "~1.2.0-beta.11",
+    "angular-ui-router": "~0.2",
+    "angular-touch": "~1.3.15",
+    "angular-local-storage": "~0.1.5",
+    "lodash": "~3.6.0",
+    "angular-google-maps": "~2.0.19"
+  },
+  "resolutions": {
+    "lodash": "~2.4.1"
+  }
+}

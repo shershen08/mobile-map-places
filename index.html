@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>mapApp v.0.1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+
+    <!-- Mobile only -->
+    <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
+    <!-- Responsive  -->
+    <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
+    <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
+    <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
+
+    <link rel="stylesheet" href="app/style.css" />
+
+</head>
+<body ng-app="mapApp">
+
+  <!-- Sidebars -->
+  <!--<div class="sidebar sidebar-left"></div>
+  <div class="sidebar sidebar-right"></div>-->
+
+
+
+  <div class="app">
+     <ui-view>
+
+
+    <!-- page title -->
+    <div class="navbar navbar-app navbar-absolute-top">
+        
+
+             <div class="btn-group">
+              <a ui-turn-on='myDropdown' class='btn'>
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <ul 
+                class="dropdown-menu"
+                ui-outer-click="Ui.turnOff('myDropdown')"
+                ui-outer-click-if="Ui.active('myDropdown')"
+                role="menu"
+                ui-show="myDropdown" 
+                ui-state="myDropdown"
+                ui-turn-off="myDropdown">
+
+                <li><a>Add</a></li>
+                <li><a>Share</a></li>
+                <li><a>Search</a></li>
+              </ul>
+            </div>
+
+
+         <h3 style="display: inline-block;">{{title}}</h3>
+        
+
+
+    </div>
+
+
+    <!-- page navbar -->
+    <div class="navbar navbar-app navbar-absolute-bottom">
+
+            <div class="btn-group justified nav-tabs">
+              <a class="btn" ui-sref="home">Map</a>
+              <a class="btn" ui-sref="list">List</a>
+              <a class="btn" ui-sref="add">Add my</a>
+            </div>
+
+    </div>
+
+    <!-- App body -->
+
+    <div class='app-body'>
+      <div class='app-content'>
+       
+
+   
+
+
+            <ui-gmap-google-map center='map.center'
+                                zoom='map.zoom'
+                                 style="width: 100%; height: 100%"></ui-gmap-google-map>
+       
+      </div>
+    </div>
+     </ui-view>
+  </div><!-- ~ .app -->
+
+
+  <!-- Modals and Overlays -->
+  <div ui-yield-to="modals"></div>
+
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+
+    <!-- JS from Bower Components -->
+  <script src="app/app.js"></script>
+
+</body>
+</html>
