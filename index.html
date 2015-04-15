@@ -23,6 +23,30 @@
   <div class="sidebar sidebar-right"></div>-->
 
 
+  <!-- Modals and Overlays -->
+  <div ui-yield-to="modals"></div>
+
+  <div ui-content-for="modals">
+    <div class="modal modal-overlay" ui-if='about' ui-state='about'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close"
+                    ui-turn-off="about">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, amet harum reiciendis enim adipisci magni fugit suscipit eaque corporis? Saepe eius ipsum optio dolorum a qui adipisci, reprehenderit totam temporibus!</p>
+          </div>
+          <div class="modal-footer">
+            <button ui-turn-off="about" class="btn btn-default">Close</button>
+            <button ui-turn-off="about" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="app">
      <ui-view>
@@ -45,9 +69,7 @@
                 ui-state="myDropdown"
                 ui-turn-off="myDropdown">
 
-                <li><a>Add</a></li>
-                <li><a>Share</a></li>
-                <li><a>Search</a></li>
+                <li><a ui-sref="about">About</a></li>
               </ul>
             </div>
 
@@ -63,9 +85,9 @@
     <div class="navbar navbar-app navbar-absolute-bottom">
 
             <div class="btn-group justified nav-tabs">
+             <a class="btn" ui-sref="add">Add my</a>
               <a class="btn" ui-sref="home">Map</a>
               <a class="btn" ui-sref="list">List</a>
-              <a class="btn" ui-sref="add">Add my</a>
             </div>
 
     </div>
@@ -76,13 +98,14 @@
       <div class='app-content'>
        
 
-   
-
 
             <ui-gmap-google-map center='map.center'
                                 zoom='map.zoom'
-                                 style="width: 100%; height: 100%"></ui-gmap-google-map>
-       
+                                style="width: 100%; height: 100%">
+
+                                  <ui-gmap-markers models="points" coords="'self'" icon="'icon'" click="markerClick">
+                                  </ui-gmap-markers>
+           </ui-gmap-google-map>
       </div>
     </div>
      </ui-view>
