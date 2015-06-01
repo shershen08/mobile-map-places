@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900556802749634,
+          52.37315277095617
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.890021085739136,
+          52.367293291260246
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.906243085861206,
+          52.363585270383254
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.918355941772461,
+          52.36423386893056
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.897724390029907,
+          52.37404685461664
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.894012212753296,
+          52.37891323436772
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.884629845619202,
+          52.37452827678308
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8869311809539795,
+          52.37939787808805
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.889591932296753,
+          52.37440055304629
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "address": "todo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.915308952331543,
+          52.361134923273504
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "address": "todo"
+      }
+    }
+  ]
+}

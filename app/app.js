@@ -36,13 +36,14 @@ mapApp.config(function(uiGmapGoogleMapApiProvider) {
 
 mapApp.constant('APP_SETTINGS', {
   'centerPoint' :  [52.370216, 4.895168], //Amsterdam
-  'defaultZoom' :  13
+  'defaultZoom' :  13,
+  'version'     : '0.2'
 })
 
 mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
       function ($scope, $state, $stateParams, $http, APP_SETTINGS) {
 
-    $http.get('app/map.geojson').then(function(data){
+    $http.get('app/map-v0.2-.geojson').then(function(data){
 
       /*
 
@@ -60,8 +61,8 @@ mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP
           var ret = {
                       latitude    : element.geometry.coordinates[1],
                       longitude   : element.geometry.coordinates[0],
-                      title       : element.properties.address,
-                      id          : element.properties.id
+                      title       : 'dasdsddsa',
+                      id          : index
                     };
 
             pointsArray.push(ret);
@@ -74,6 +75,7 @@ mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP
     $scope.map = { center: { latitude: APP_SETTINGS.centerPoint[0], longitude: APP_SETTINGS.centerPoint[1] }, zoom: APP_SETTINGS.defaultZoom };
 
     $scope.title = $state.current.name;
+    $scope.version = APP_SETTINGS.version;
 
     $scope.markerClick  = function(item){
       console.info(item);
