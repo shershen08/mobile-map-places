@@ -4,6 +4,7 @@
   "description": "Amsterdam map",
   "repository": "https://github.com/shershen08/mobile-maps-places",
   "dependencies": {
+    "bower": "^1.6.5",
     "ejs": "2.3.3",
     "express": "4.13.3",
     "jade": "1.11.0",
@@ -12,6 +13,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "postinstall" : "bower install"
+    "postinstall": "bower install"
   }
 }
