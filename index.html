@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mapApp">
 <head>
   <title>mapApp v.{{version}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,13 +10,12 @@
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
     <!-- Responsive  -->
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
-    <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
 
     <link rel="stylesheet" href="app/style.css" />
 
 </head>
-<body ng-app="mapApp">
+<body>
 
   <!-- Sidebars -->
   <!--<div class="sidebar sidebar-left"></div>
@@ -24,6 +23,7 @@
 
 
   <!-- Modals and Overlays -->
+
   <div ui-yield-to="modals"></div>
 
   <div ui-content-for="modals">
@@ -54,18 +54,18 @@
 
     <!-- page title -->
     <div class="navbar navbar-app navbar-absolute-top">
-        
+
 
              <div class="btn-group">
               <a ui-turn-on='myDropdown' class='btn'>
                 <i class="fa fa-ellipsis-v"></i>
               </a>
-              <ul 
+              <ul
                 class="dropdown-menu"
                 ui-outer-click="Ui.turnOff('myDropdown')"
                 ui-outer-click-if="Ui.active('myDropdown')"
                 role="menu"
-                ui-show="myDropdown" 
+                ui-show="myDropdown"
                 ui-state="myDropdown"
                 ui-turn-off="myDropdown">
 
@@ -74,20 +74,15 @@
               </ul>
             </div>
 
-
          <h3 style="display: inline-block;">{{title}}</h3>
-        
-
-
     </div>
 
 
     <!-- page navbar -->
     <div class="navbar navbar-app navbar-absolute-bottom">
 
-            <div class="btn-group justified nav-tabs">
-              <a class="btn" ui-sref="home">Map</a>
-              <a class="btn" ui-sref="list">List</a>
+            <div class="btn-group navbar-brand-center justify nav-tabs">
+              <a class="btn" ng-click="locateUser()">Find me!</a>
             </div>
 
     </div>
@@ -96,15 +91,11 @@
 
     <div class='app-body'>
       <div class='app-content'>
-       
-
-
             <ui-gmap-google-map center='map.center'
                                 zoom='map.zoom'
                                 style="width: 100%; height: 100%">
-
-                                  <ui-gmap-markers models="points" coords="'self'" icon="'icon'" click="markerClick">
-                                  </ui-gmap-markers>
+              <ui-gmap-markers models="points" coords="'self'" icon="'icon'" click="markerClick">
+              </ui-gmap-markers>
            </ui-gmap-google-map>
       </div>
     </div>
@@ -114,7 +105,6 @@
 
   <!-- Modals and Overlays -->
   <div ui-yield-to="modals"></div>
-
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
