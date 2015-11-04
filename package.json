@@ -1,0 +1,9 @@
+{
+  "name": "Amsterdam map",
+  "version": "0.3",
+  "description": "Amsterdam map",
+  "repository": "https://github.com/shershen08/mobile-maps-places",
+  "dependencies": {
+    "statik": "~1.2.5"
+  }
+}
