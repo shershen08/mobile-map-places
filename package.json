@@ -1,9 +1,13 @@
 {
-  "name": "Amsterdam map",
-  "version": "0.3",
+  "name": "mobile-maps-places",
+  "version": "0.3.0",
   "description": "Amsterdam map",
   "repository": "https://github.com/shershen08/mobile-maps-places",
   "dependencies": {
-    "statik": "~1.2.5"
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "jade": "1.11.0",
+    "json-server": "0.8.2",
+    "path": "^0.12.7"
   }
 }

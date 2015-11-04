@@ -57,7 +57,7 @@ function($scope, $rootScope, APP_SETTINGS){
 mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
       function ($scope, $state, $stateParams, $http, APP_SETTINGS) {
 
-    $http.get('app/map-v0.2-.geojson').then(function(response){
+    $http.get('map-v0.2-.geojson').then(function(response){
 
       var pointsArray = [];
       response.data.features.forEach(function(element, index){

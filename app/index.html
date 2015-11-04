@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
 
-    <link rel="stylesheet" href="app/assets/style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
 
 </head>
 <body ng-app="mapApp">
@@ -117,10 +117,7 @@
               <ui-gmap-markers models="points"
                                coords="'self'"
                                icon="'icon'"
-                               click="markerClick"
-                               labelContent="'bla bla bal'"
-                                labelAnchor="'100, 0'"
-                                labelClass="'marker-labels'">
+                               click="markerClick">
               </ui-gmap-markers>
            </ui-gmap-google-map>
       </div>
@@ -129,16 +126,12 @@
   </div><!-- ~ .app -->
 
 
-
-
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
     <script src="bower_components/lodash/dist/lodash.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-
-    <!-- JS from Bower Components -->
-  <script src="app/app.js"></script>
+  <script src="client.js"></script>
 
 </body>
 </html>
