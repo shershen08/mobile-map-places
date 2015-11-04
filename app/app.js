@@ -17,11 +17,11 @@ mapApp.config(function($stateProvider, $urlRouterProvider) {
         })
             .state("add", {
           url: "/add",
-          controller : 'homeCtrl'
+          controller : 'addCtrl'
         })
             .state("about", {
           url: "/about",
-          controller : 'homeCtrl'
+          controller : 'aboutCtrl'
         })
 });
 
@@ -36,11 +36,23 @@ mapApp.config(function(uiGmapGoogleMapApiProvider) {
 
 mapApp.constant('APP_SETTINGS', {
   'centerPoint' :  [52.370216, 4.895168], //Amsterdam
-  'defaultZoom' :  13,
-  'version'     : '0.2'
+  'defaultZoom' :  13
 })
 
 mapApp.value('version', '0.2');
+
+mapApp.controller('aboutCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
+function($scope, $rootScope, APP_SETTINGS){
+  //code here
+}]);
+
+mapApp.controller('addCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
+function($scope, $rootScope, APP_SETTINGS){
+  //todo save form details
+  $scope.saveAddress = function(){
+
+  }
+}]);
 
 mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
       function ($scope, $state, $stateParams, $http, APP_SETTINGS) {
@@ -85,6 +97,13 @@ mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP
                     latitude    : coordinates.latitude,
                     longitude   : coordinates.longitude,
                     title       : 'You',
+                    icon : 'app/assets/blue-point.png',
+                    options : {
+                      labelContent: 'You',
+                      labelAnchor: "100 0",
+                      labelClass: "marker-labels"
+                    },
+                    showWindow  : false,
                     id          : $scope.points.length
                   };
         $scope.points.push(ret);
@@ -93,7 +112,7 @@ mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP
 
     $scope.map = { center: { latitude: APP_SETTINGS.centerPoint[0], longitude: APP_SETTINGS.centerPoint[1] }, zoom: APP_SETTINGS.defaultZoom };
 
-    $scope.title = $state.current.name;
+    $scope.title = 'Amsterdam toilets map';
     $scope.version = APP_SETTINGS.version;
 
     $scope.markerClick  = function(item){

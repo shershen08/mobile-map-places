@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="mapApp">
+<html>
 <head>
-  <title>mapApp v.{{version}}</title>
+  <title>mapApp v0.3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta charset="utf-8">
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
@@ -12,89 +12,115 @@
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
     <link rel="stylesheet" href="bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
 
-    <link rel="stylesheet" href="app/style.css" />
+    <link rel="stylesheet" href="app/assets/style.css" />
 
 </head>
-<body>
-
-  <!-- Sidebars -->
-  <!--<div class="sidebar sidebar-left"></div>
-  <div class="sidebar sidebar-right"></div>-->
-
+<body ng-app="mapApp">
 
   <!-- Modals and Overlays -->
-
   <div ui-yield-to="modals"></div>
 
+
   <div ui-content-for="modals">
-    <div class="modal modal-overlay" ui-if='about' ui-state='about'>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close"
-                    ui-turn-off="about">&times;</button>
-            <h4 class="modal-title">Modal title</h4>
+
+          <!-- ABOUT -->
+        <div class="modal modal-overlay" ui-if='about' ui-state='about'>
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close"
+                        ui-turn-off="about" ui-sref="home">&times;</button>
+                <h4 class="modal-title">About the app</h4>
+              </div>
+              <div class="modal-body">
+                <p>Here you can find list of publicly open toilets in Amsterdam.</p>
+                <p>This is a simple demo app to play around with Angular-mobile-ui and Google maps</p>
+                <p>Feedback: <a href="https://twitter.com/legkoletat">@legkoletat</a></p>
+              </div>
+              <div class="modal-footer">
+                <button ui-turn-off="about" ui-sref="home" class="btn btn-default">Close</button>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, amet harum reiciendis enim adipisci magni fugit suscipit eaque corporis? Saepe eius ipsum optio dolorum a qui adipisci, reprehenderit totam temporibus!</p>
-          </div>
-          <div class="modal-footer">
-            <button ui-turn-off="about" class="btn btn-default">Close</button>
-            <button ui-turn-off="about" class="btn btn-primary">Save changes</button>
+        </div>
+
+        <!-- ADD POINT -->
+        <div class="modal modal-overlay" ui-if='add' ui-state='add'>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close"
+                      ui-turn-off="add" ui-sref="home">&times;</button>
+              <h4 class="modal-title">Add point</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="addressfield">Address</label>
+                  <input type="text" class="form-control" id="addressfield" placeholder="Street, house number">
+                </div>
+                <button type="button" class="btn btn-default" ng-click="saveAddress()">Submit</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button ui-turn-off="add" ui-sref="home" class="btn btn-default">Close</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 
 
   <div class="app">
      <ui-view>
 
+        <!-- page title -->
+        <div class="navbar navbar-app navbar-absolute-top">
 
-    <!-- page title -->
-    <div class="navbar navbar-app navbar-absolute-top">
+                 <div class="btn-group">
+                  <a ui-turn-on='myDropdown' class='btn'>
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    ui-outer-click="Ui.turnOff('myDropdown')"
+                    ui-outer-click-if="Ui.active('myDropdown')"
+                    role="menu"
+                    ui-show="myDropdown"
+                    ui-state="myDropdown"
+                    ui-turn-off="myDropdown">
 
+                    <li><a ui-sref="add" ui-turn-on="add">Add new point</a></li>
+                    <li><a ui-sref="about" ui-turn-on="about">About the app</a></li>
+                  </ul>
+                </div>
 
-             <div class="btn-group">
-              <a ui-turn-on='myDropdown' class='btn'>
-                <i class="fa fa-ellipsis-v"></i>
-              </a>
-              <ul
-                class="dropdown-menu"
-                ui-outer-click="Ui.turnOff('myDropdown')"
-                ui-outer-click-if="Ui.active('myDropdown')"
-                role="menu"
-                ui-show="myDropdown"
-                ui-state="myDropdown"
-                ui-turn-off="myDropdown">
+             <h3 style="display: inline-block;">{{title}}</h3>
+        </div>
 
-                <li><a ui-sref="add">Submit new point</a></li>
-                <li><a ui-sref="about">About the app</a></li>
-              </ul>
-            </div>
+        <!-- page navbar -->
+        <div class="navbar navbar-app navbar-absolute-bottom">
 
-         <h3 style="display: inline-block;">{{title}}</h3>
-    </div>
+                <div class="btn-group navbar-brand-center justify nav-tabs">
+                  <a class="btn find-me-button" ng-click="locateUser()">Find me!</a>
+                </div>
 
+        </div>
 
-    <!-- page navbar -->
-    <div class="navbar navbar-app navbar-absolute-bottom">
-
-            <div class="btn-group navbar-brand-center justify nav-tabs">
-              <a class="btn" ng-click="locateUser()">Find me!</a>
-            </div>
-
-    </div>
-
-    <!-- App body -->
+        <!-- App body -->
 
     <div class='app-body'>
       <div class='app-content'>
             <ui-gmap-google-map center='map.center'
                                 zoom='map.zoom'
                                 style="width: 100%; height: 100%">
-              <ui-gmap-markers models="points" coords="'self'" icon="'icon'" click="markerClick">
+              <ui-gmap-markers models="points"
+                               coords="'self'"
+                               icon="'icon'"
+                               click="markerClick"
+                               labelContent="'bla bla bal'"
+                                labelAnchor="'100, 0'"
+                                labelClass="'marker-labels'">
               </ui-gmap-markers>
            </ui-gmap-google-map>
       </div>
@@ -103,8 +129,7 @@
   </div><!-- ~ .app -->
 
 
-  <!-- Modals and Overlays -->
-  <div ui-yield-to="modals"></div>
+
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
