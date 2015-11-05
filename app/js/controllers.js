@@ -1,60 +1,38 @@
-var mapApp = angular.module('mapApp', ["mobile-angular-ui", "uiGmapgoogle-maps", "ui.router"]);
+angular.module('mapApp')
 
-
-mapApp.config(function($stateProvider, $urlRouterProvider) {
-
-    /* Add New States Above */
-    $urlRouterProvider.otherwise('/home');
-
-    $stateProvider
-        .state("home", {
-          url: "/home",
-          controller : 'homeCtrl'
-        })
-          .state("list", {
-          url: "/list",
-          controller : 'homeCtrl'
-        })
-            .state("add", {
-          url: "/add",
-          controller : 'addCtrl'
-        })
-            .state("about", {
-          url: "/about",
-          controller : 'aboutCtrl'
-        })
-});
-
-
-mapApp.config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        //    key: 'your api key',
-        v: '3.17',
-        libraries: 'weather,geometry,visualization'
-    });
-});
-
-mapApp.constant('APP_SETTINGS', {
-  'centerPoint' :  [52.370216, 4.895168], //Amsterdam
-  'defaultZoom' :  13
-})
-
-mapApp.value('version', '0.2');
-
-mapApp.controller('aboutCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
+.controller('aboutCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
 function($scope, $rootScope, APP_SETTINGS){
   //code here
-}]);
+}])
 
-mapApp.controller('addCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
+
+
+
+.controller('addCtrl', ['$scope', '$rootScope', 'APP_SETTINGS',
 function($scope, $rootScope, APP_SETTINGS){
-  //todo save form details
-  $scope.saveAddress = function(){
 
-  }
-}]);
 
-mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
+  var vm = this;
+
+
+  vm.saveAddress = function(){
+
+      //vm.address
+      //vm.geo
+      //vm.description
+
+      // should POST to /addpoint
+
+  };
+
+  vm.getAddress = function(){
+
+  };
+
+
+}])
+
+.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
       function ($scope, $state, $stateParams, $http, APP_SETTINGS) {
 
     $http.get('map-v0.2-.geojson').then(function(response){
@@ -97,7 +75,7 @@ mapApp.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP
                     latitude    : coordinates.latitude,
                     longitude   : coordinates.longitude,
                     title       : 'You',
-                    icon : 'app/assets/blue-point.png',
+                    icon : 'assets/blue-point.png',
                     options : {
                       labelContent: 'You',
                       labelAnchor: "100 0",

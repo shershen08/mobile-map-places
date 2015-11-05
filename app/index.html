@@ -56,10 +56,23 @@
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <label for="addressfield">Address</label>
-                  <input type="text" class="form-control" id="addressfield" placeholder="Street, house number">
+                  <label for="addressfield">Approximate address</label>
+                  <input type="text" class="form-control" ng-model="vm.address" id="addressfield" placeholder="Street, house number">
                 </div>
-                <button type="button" class="btn btn-default" ng-click="saveAddress()">Submit</button>
+                <div class="form-group">
+                  <label for="addressfield">Description</label>
+                  <textarea class="form-control" ng-model="vm.description" rows="3" id="descriptionfield"></textarea>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                     <input type="text" disabled ng-model="vm.geo" class="form-control" placeholder="latitde/lognitude">
+                     <span class="input-group-btn">
+                       <button class="btn btn-default" ng-click="vm.getAddress()" type="button">Allocate position</button>
+                     </span>
+                   </div><!-- /input-group -->
+
+                </div>
+                <button type="button" class="btn btn-default" ng-click="vm.saveAddress()">Submit</button>
               </form>
             </div>
             <div class="modal-footer">
@@ -126,12 +139,13 @@
   </div><!-- ~ .app -->
 
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
-    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-  <script src="client.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/controllers.js"></script>
 
 </body>
 </html>
