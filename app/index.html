@@ -38,7 +38,8 @@
                 <p>Feedback: <a href="https://twitter.com/legkoletat">@legkoletat</a></p>
               </div>
               <div class="modal-footer">
-                <button ui-turn-off="about" ui-sref="home" class="btn btn-default">Close</button>
+                <button onclick="(document.location = document.location.origin + '/')" class="btn btn-default">Close</button>
+                <!-- <button ui-turn-off="about" ui-sref="home" class="btn btn-default">Close</button> -->
               </div>
             </div>
           </div>
@@ -76,7 +77,8 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button ui-turn-off="add" ui-sref="home" class="btn btn-default">Close</button>
+              <button  onclick="(document.location = document.location.origin + '/')" class="btn btn-default">Close</button>
+              <!-- <button ui-turn-off="add" ui-sref="home" class="btn btn-default">Close</button> -->
             </div>
           </div>
         </div>
@@ -139,7 +141,7 @@
   </div><!-- ~ .app -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>

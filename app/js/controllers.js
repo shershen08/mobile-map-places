@@ -32,25 +32,34 @@ function($scope, $rootScope, APP_SETTINGS){
 
 }])
 
-.controller('homeCtrl', ['$scope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
-      function ($scope, $state, $stateParams, $http, APP_SETTINGS) {
+.controller('homeCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '$http', 'APP_SETTINGS',
+      function ($scope, $rootScope, $state, $stateParams, $http, APP_SETTINGS) {
 
-    $http.get('map-v0.2-.geojson').then(function(response){
+    if($rootScope.points && $rootScope.points.length > 0){
+      $scope.points = $rootScope.points;
+    } else {
+      getPoints();
+    }
 
-      var pointsArray = [];
-      response.data.features.forEach(function(element, index){
+    function getPoints() {
+        $http.get('map-v0.2-.geojson').then(function(response){
 
-          var ret = {
-                      latitude    : element.geometry.coordinates[1],
-                      longitude   : element.geometry.coordinates[0],
-                      title       : 'Point ' + index,
-                      id          : index
-                    };
-
+        var pointsArray = [];
+        response.data.features.forEach(function(element, index){
+            var ret = {
+                        latitude    : element.geometry.coordinates[1],
+                        longitude   : element.geometry.coordinates[0],
+                        title       : 'Point ' + index,
+                        id          : index
+                      };
             pointsArray.push(ret);
+        })
+        $scope.points = pointsArray;
+        $rootScope.points = pointsArray;
       })
-      $scope.points = pointsArray;
-    })
+    }
+
+  
 
     function requestGeoPosition(){
       if (navigator.geolocation) {
@@ -89,9 +98,7 @@ function($scope, $rootScope, APP_SETTINGS){
     }
 
     $scope.map = { center: { latitude: APP_SETTINGS.centerPoint[0], longitude: APP_SETTINGS.centerPoint[1] }, zoom: APP_SETTINGS.defaultZoom };
-
     $scope.title = 'Amsterdam toilets map';
-    $scope.version = APP_SETTINGS.version;
 
     $scope.markerClick  = function(item){
       console.info(item);
